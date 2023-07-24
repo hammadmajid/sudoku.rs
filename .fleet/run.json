@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "cargo",
+            "name": "Run Dev - Optamized + DebugInfo",
+            "cargoArgs": ["run"],
+        },
+        
+    ]
+}
