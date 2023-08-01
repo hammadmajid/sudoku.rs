@@ -17,6 +17,13 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-latest]
     steps:
     - uses: actions/checkout@v3
+    - name: Cache dependencies
+      uses: actions/cache@v3
+      with:
+        key: ${{ runner.os }}-dependencies
+        path: ~/.cargo/registry/cache
+        restore-keys: |
+          ${{ runner.os }}-dependencies
     - name: Build
       run: cargo build --verbose
     - name: Run tests
