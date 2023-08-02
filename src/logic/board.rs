@@ -5,12 +5,12 @@ use bevy::prelude::*;
 #[allow(dead_code)]
 pub struct Position {
     /// Between 1 and 9, counted from top to bottom
-    row: u8,
+    pub row: u8,
     /// Between 1 and 9, counted from top to bottom
-    column: u8,
+    pub column: u8,
     /// Squares are counted from 1 to 9 starting at the top left,
     /// in standard left-to-right reading order
-    block: u8,
+    pub block: u8,
 }
 
 #[allow(dead_code)]

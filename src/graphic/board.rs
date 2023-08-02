@@ -1,4 +1,5 @@
 use crate::graphic::config::*;
+use crate::logic::board::*;
 
 use bevy::prelude::*;
 
@@ -9,6 +10,48 @@ pub fn spawn_grid(mut commands: Commands) {
     }
     for column in 1..=9 {
         commands.spawn(new_gridline(Orientation::Vertical, column));
+    }
+}
+
+pub fn spawn_cell(mut commands: Commands) {
+    for row in 1..=9 {
+        for column in 1..=9 {
+            commands.spawn(CellBundle::new(row, column));
+        }
+    }
+}
+
+#[derive(Bundle)]
+struct CellBundle {
+    position: Position,
+    value: Value,
+    cell_fill: SpriteBundle,
+}
+
+impl CellBundle {
+    fn new(row: u8, column: u8) -> Self {
+        let x = GRID_LEFT_EDGE + CELL_SIZE * row as f32 - 0.5 * CELL_SIZE;
+        let y = GRID_BOT_EDGE + CELL_SIZE * column as f32 - 0.5 * CELL_SIZE;
+
+        CellBundle {
+            position: Position {
+                row,
+                column,
+                block: Position::compute_square(row, column),
+            },
+            value: Value::Empty,
+            cell_fill: SpriteBundle {
+                sprite: Sprite {
+                    custom_size: Some(Vec2 {
+                        x: CELL_SIZE,
+                        y: CELL_SIZE,
+                    }),
+                    ..Default::default()
+                },
+                transform: Transform::from_xyz(x, y, 0.0),
+                ..Default::default()
+            },
+        }
     }
 }
 

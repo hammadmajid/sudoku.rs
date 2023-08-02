@@ -16,7 +16,14 @@ fn main() {
                 })
                 .build(),
         )
-        .add_systems(Startup, (setup, graphic::board::spawn_grid))
+        .add_systems(
+            Startup,
+            (
+                setup,
+                graphic::board::spawn_grid,
+                graphic::board::spawn_cell,
+            ),
+        )
         .run();
 }
 
