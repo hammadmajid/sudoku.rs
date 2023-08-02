@@ -3,22 +3,12 @@ use crate::graphic::config;
 use bevy::prelude::*;
 
 /// Spawn the sudoku board grid
-pub fn spawn_grid(mut commands: Commands, mut meterials: ResMut<Assets<ColorMaterial>>) {
-    let grid_handle = meterials.add(config::BACKGROUND_COLOR.into());
-
+pub fn spawn_grid(mut commands: Commands) {
     for row in 1..=9 {
-        commands.spawn(new_gridline(
-            Orientation::Horizontal,
-            row,
-            grid_handle.clone(),
-        ));
+        commands.spawn(new_gridline(Orientation::Horizontal, row));
     }
     for column in 1..=9 {
-        commands.spawn(new_gridline(
-            Orientation::Vertical,
-            column,
-            grid_handle.clone(),
-        ));
+        commands.spawn(new_gridline(Orientation::Vertical, column));
     }
 }
 
@@ -32,11 +22,7 @@ enum Orientation {
 
 /// Draws a new grid line with provided parameters
 /// @returns SpriteBundle for Bevyengine to draw
-fn new_gridline(
-    orientation: Orientation,
-    i: u8,
-    grid_handle: Handle<ColorMaterial>,
-) -> SpriteBundle {
+fn new_gridline(orientation: Orientation, i: u8) -> SpriteBundle {
     // The grid lines that define the boxes need to be thicker
     let thickness = if (i % 3) == 0 {
         config::MAJOR_LINE_THICKNESS
@@ -67,6 +53,7 @@ fn new_gridline(
 
     SpriteBundle {
         sprite: Sprite {
+            color: config::BACKGROUND_COLOR,
             custom_size: Some(size),
             ..default()
         },
