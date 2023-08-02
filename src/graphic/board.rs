@@ -53,7 +53,7 @@ fn new_gridline(orientation: Orientation, i: u8) -> SpriteBundle {
 
     SpriteBundle {
         sprite: Sprite {
-            color: config::BACKGROUND_COLOR,
+            color: config::GRID_LINE_COLOR,
             custom_size: Some(size),
             ..default()
         },

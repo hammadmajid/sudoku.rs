@@ -1,12 +1,14 @@
 use bevy::prelude::*;
 
 // Colors
-pub const BACKGROUND_COLOR: Color = Color::rgb(0.3, 0.3, 0.3);
+#[allow(dead_code)]
+pub const BACKGROUND_COLOR: Color = Color::rgb(30.0, 30.0, 46.0);
+pub const GRID_LINE_COLOR: Color = Color::rgb(108.0, 112.0, 134.0);
 
 #[allow(dead_code)]
-pub const FILLED_CELL_COLOR: Color = Color::rgb(2.0, 2.0, 3.0);
+pub const CELL_TEXT_COLOR: Color = Color::rgb(180.0, 190.0, 254.0);
 #[allow(dead_code)]
-pub const FIXED_CELL_COLOR: Color = Color::rgb(2.0, 2.0, 3.0);
+pub const FIXED_CELL_BACKGROUND_COLOR: Color = Color::rgb(147.0, 153.0, 178.0);
 
 // Sizes
 pub const CELL_SIZE: f32 = 50.0;
