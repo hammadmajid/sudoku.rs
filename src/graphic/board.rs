@@ -1,4 +1,4 @@
-use crate::graphic::config;
+use crate::graphic::config::*;
 
 use bevy::prelude::*;
 
@@ -25,12 +25,12 @@ enum Orientation {
 fn new_gridline(orientation: Orientation, i: u8) -> SpriteBundle {
     // The grid lines that define the boxes need to be thicker
     let thickness = if (i % 3) == 0 {
-        config::MAJOR_LINE_THICKNESS
+        MAJOR_LINE_THICKNESS
     } else {
-        config::MINOR_LINE_THICKNESS
+        MINOR_LINE_THICKNESS
     };
 
-    let length = config::GRID_SIZE + thickness;
+    let length = GRID_SIZE + thickness;
 
     let size = match orientation {
         Orientation::Horizontal => Vec2::new(length, thickness),
@@ -38,22 +38,16 @@ fn new_gridline(orientation: Orientation, i: u8) -> SpriteBundle {
     };
 
     // Each object's position is defined by it's center
-    let offset = i as f32 * config::CELL_SIZE;
+    let offset = i as f32 * CELL_SIZE;
 
     let (x, y) = match orientation {
-        Orientation::Horizontal => (
-            config::GRID_LEFT_EDGE + 0.5 * config::GRID_SIZE,
-            config::GRID_BOT_EDGE + offset,
-        ),
-        Orientation::Vertical => (
-            config::GRID_LEFT_EDGE + offset,
-            config::GRID_BOT_EDGE + 0.5 * config::GRID_SIZE,
-        ),
+        Orientation::Horizontal => (GRID_LEFT_EDGE + 0.5 * GRID_SIZE, GRID_BOT_EDGE + offset),
+        Orientation::Vertical => (GRID_LEFT_EDGE + offset, GRID_BOT_EDGE + 0.5 * GRID_SIZE),
     };
 
     SpriteBundle {
         sprite: Sprite {
-            color: config::GRID_LINE_COLOR,
+            color: GRID_LINE_COLOR,
             custom_size: Some(size),
             ..default()
         },
