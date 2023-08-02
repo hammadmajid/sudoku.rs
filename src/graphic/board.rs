@@ -47,8 +47,8 @@ fn new_gridline(
     let length = config::GRID_SIZE + thickness;
 
     let size = match orientation {
-        Orientation::Horizontal => Vec2::new(length, thickness),
-        Orientation::Vertical => Vec2::new(thickness, length),
+        Orientation::Horizontal => Vec2::new(length.into(), thickness.into()),
+        Orientation::Vertical => Vec2::new(thickness.into(), length.into()),
     };
 
     // Each object's position is defined by it's center
@@ -66,7 +66,10 @@ fn new_gridline(
     };
 
     SpriteBundle {
-        sprite: Sprite::default(),
+        sprite: Sprite {
+            custom_size: Some(size),
+            ..default()
+        },
         // We want these grid lines to cover any cell that it might overlap with
         transform: Transform::from_xyz(x, y, 1.0),
         // material: grid_handle,
