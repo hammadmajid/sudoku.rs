@@ -17,6 +17,10 @@ jobs:
         os: [windows-latest, macos-latest]
     steps:
     - uses: actions/checkout@v3
+    - name: Build
+      run: cargo build --verbose
+    - name: Run tests
+      run: cargo test --verbose
     - name: Cache dependencies
       uses: actions/cache@v3
       with:
@@ -24,10 +28,6 @@ jobs:
         path: ~/.cargo/registry/cache
         restore-keys: |
           ${{ runner.os }}-dependencies
-    - name: Build
-      run: cargo build --verbose
-    - name: Run tests
-      run: cargo test --verbose
     - name: Retain artifacts
       uses: actions/upload-artifact@v3
       with:
