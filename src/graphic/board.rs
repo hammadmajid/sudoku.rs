@@ -33,8 +33,8 @@ fn new_gridline(orientation: Orientation, i: u8) -> SpriteBundle {
     let length = config::GRID_SIZE + thickness;
 
     let size = match orientation {
-        Orientation::Horizontal => Vec2::new(length.into(), thickness.into()),
-        Orientation::Vertical => Vec2::new(thickness.into(), length.into()),
+        Orientation::Horizontal => Vec2::new(length, thickness),
+        Orientation::Vertical => Vec2::new(thickness, length),
     };
 
     // Each object's position is defined by it's center
