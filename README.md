@@ -1,5 +1,28 @@
-# sudoku.rs
+# <p align="center">sudoku.rs</p>
 
-![Cover - itch io](https://github.com/hammadmajid/sudoku.rs/assets/67387019/b3bf5303-0ca0-4efa-ae4a-c6e3d96f4040)
+Implementation of [Sudoku](https://en.wikipedia.org/wiki/Sudoku) a logic-based puzzle in Rust using [Bevyengine](https://github.com/bevyengine/rust).
 
-Sudoku built with Rust using Bevyengine.
+## Features
+
+Here is an exshative list of all the features that has or will be implemeted:
+
+### Game
+
+- [ ] Puzzle generation
+- [ ] Multiple input methos (Keyboard, mouse)
+
+## Contributing
+
+
+### Documentation
+
+After cloning the repository locally run the below commands to build and open docs in your browser:
+
+```sh
+cargo doc
+```
+
+## License
+
+This game is licensed under **GPL 3.0 License**. Read the terms in the file [LICENSE](./LICENSE) to undertand how to mofify, re-sell, and distribute the game.
+
