@@ -1,5 +1,6 @@
 use bevy::prelude::*;
 
+/// Cell's position on 9x9 board
 #[derive(Component)]
 #[allow(dead_code)]
 pub struct Position {
